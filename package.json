@@ -1,0 +1,45 @@
+{
+  "name": "world-directory",
+  "version": "1.0.0",
+  "description": "A JSON Object containing Countries and their associated States/Provinces and cities.",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "scripts": {
+    "test": "ts-node test.ts",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "build": "tsc",
+    "prebuild": "ts-node ./src/lib/compilecountries.ts",
+    "lint": "tslint -p tsconfig.json",
+    "build:publish": "npm run lint && npm run build &&  npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhirajchhetri/world-directory.git"
+  },
+  "keywords": [
+    "country",
+    "city",
+    "state",
+    "json"
+  ],
+  "author": "Dhiraj Chhetri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dhirajchhetri/world-directory/issues"
+  },
+  "homepage": "https://github.com/dhirajchhetri/world-directory#readme",
+  "dependencies": {
+    "countries-list": "^2.3.2",
+    "country-state-city": "^0.0.5",
+    "trie-search": "^1.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.9",
+    "prettier": "^3.0.3",
+    "ts-node": "^10.9.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^5.2.2"
+  },
+  "reveal": true
+}

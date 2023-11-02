@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./build",
+    "strict": true,
+    "typeRoots": ["./typings", "node_modules/@types"]
+  },
+  "include": ["src", "src/**.json"],
+  "exclude": ["node_modules", "**/__tests__/*"]
+}
