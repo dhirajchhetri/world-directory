@@ -11,17 +11,26 @@ const trie = new TrieSearch([],
 )
 
 
-for (let countryName in db) {
-  for (let state in db[countryName].states) {
-    for (let idx in db[countryName].states[state]) {
-      const toSave = {
-        city: db[countryName].states[state][idx],
-        state: state,
-        country: db[countryName],
+for (const countryName in db) {
+  if (db.hasOwnProperty(countryName)) {
+    for (const state in db[countryName].states) {
+      if (db[countryName].states.hasOwnProperty(state)) {
+        for (const idx in db[countryName].states[state]) {
+          if (db[countryName].states[state].hasOwnProperty(idx)) {
+            const toSave = {
+              city: db[countryName].states[state][idx],
+              state,
+              country: db[countryName],
+            }
+            const key = db[countryName].states[state][idx].name
+            trie.map(key, toSave)
+
+          }
+        }
+
       }
-      const key = db[countryName].states[state][idx].name
-      trie.map(key, toSave)
     }
+
   }
 }
 
@@ -29,9 +38,12 @@ const compCities = {
 
   getAll: (): ICountry[] => { return db },
   getCountriesShort: (): string[] => {
-    let res = []
-    for (var key in db) {
-      res.push(key)
+    const res = []
+    for (const key in db) {
+      if (db.hasOwnProperty(key)) {
+        res.push(key)
+
+      }
     }
     return res
   },
@@ -44,10 +56,13 @@ const compCities = {
   },
   getCountryInfoByShort: (shortName: string): Partial<Country> | null => {
     if (typeof db[shortName] !== 'undefined') {
-      let res: Partial<Country> = {};
-      for (var key in db[shortName]) {
-        if (key !== 'states') {
-          res[key as keyof Country] = db[shortName][key]; // Use a type assertion
+      const res: Partial<Country> = {};
+      for (const key in db[shortName]) {
+        if (db[shortName].hasOwnProperty(key)) {
+          if (key !== 'states') {
+            res[key as keyof Country] = db[shortName][key]; // Use a type assertion
+          }
+
         }
       }
       return res;
@@ -70,10 +85,13 @@ const compCities = {
   },
   getCities: (shortName: string, state: string): string[] | null => {
     if (typeof db[shortName] !== 'undefined') {
-      if (typeof db[shortName].states != 'undefined') {
-        let res = []
-        for (let idx in db[shortName].states[state]) {
-          res.push(db[shortName].states[state][idx].name)
+      if (typeof db[shortName].states !== 'undefined') {
+        const res = []
+        for (const idx in db[shortName].states[state]) {
+          if (db[shortName].states[state].hasOwnProperty(idx)) {
+            res.push(db[shortName].states[state][idx].name)
+
+          }
         }
         return res
       } else {
@@ -84,18 +102,24 @@ const compCities = {
     }
   },
   getCountries: (): Partial<Country>[] => {
-    let res: Partial<Country>[] = []
+    const res: Partial<Country>[] = []
     const typedDb = db as ICountry
     for (const shortName in typedDb) {
-      let obj: Partial<Country> = {}
-      for (const key in db[shortName]) {
-        const typedKey = key as keyof Country
-        if (key !== 'states') {
-          obj.shortName = shortName
-          obj[typedKey] = db[shortName][typedKey]
+      if (typedDb.hasOwnProperty(shortName)) {
+        const obj: Partial<Country> = {}
+        for (const key in db[shortName]) {
+          if (db[shortName].hasOwnProperty(key)) {
+            const typedKey = key as keyof Country
+            if (key !== 'states') {
+              obj.shortName = shortName
+              obj[typedKey] = db[shortName][typedKey]
+            }
+
+          }
         }
+        res.push(obj)
+
       }
-      res.push(obj)
     }
     return res
   },
