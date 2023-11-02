@@ -4,9 +4,10 @@
     "module": "commonjs",
     "declaration": true,
     "outDir": "./build",
+    "resolveJsonModule": true,
     "strict": true,
     "typeRoots": ["./typings", "node_modules/@types"]
   },
-  "include": ["src", "src/**.json"],
+  "include": ["src", "./src/**/*.json"],
   "exclude": ["node_modules", "**/__tests__/*"]
 }
