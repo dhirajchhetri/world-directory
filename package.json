@@ -1,6 +1,6 @@
 {
   "name": "world-directory",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JSON Object containing Countries and their associated States/Provinces and cities.",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -23,6 +23,9 @@
     "json"
   ],
   "author": "Dhiraj Chhetri",
+  "files": [
+    "build/**/*"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dhirajchhetri/world-directory/issues"
