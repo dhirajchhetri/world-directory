@@ -1,5 +1,4 @@
 import * as  TrieSearch from 'trie-search';
-import "./lib/compilecountries"
 import { ICountry, Country, ICityInfo } from "./lib/interfaces"
 const db = require('./lib/compiledCities.json')
 

@@ -1,6 +1,6 @@
 {
   "name": "world-directory",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "A JSON Object containing Countries and their associated States/Provinces and cities.",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -8,7 +8,7 @@
     "test": "ts-node test.ts",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "build": "tsc",
-    "prebuild": "ts-node ./src/lib/compilecountries.ts",
+    "prebuild": "ts-node ./scripts/compilecountries.ts",
     "lint": "tslint -p tsconfig.json",
     "build:publish": "npm run lint && npm run build &&  npm publish"
   },

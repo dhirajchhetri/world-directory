@@ -9,5 +9,5 @@
     "typeRoots": ["./typings", "node_modules/@types"]
   },
   "include": ["src", "./src/**/*.json"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+  "exclude": ["node_modules", "**/__tests__/*", "scripts/*.ts"]
 }
